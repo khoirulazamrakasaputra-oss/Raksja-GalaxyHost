@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAKSJA GALAXYHOST - Hosting Bot WhatsApp Murah & Cepat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1e1145 0%, #080516 70%, #030207 100%);
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.2);
+        }
+        .galaxy-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .galaxy-card.ready:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 15px 35px -5px rgba(168, 85, 247, 0.25), 0 0 15px 0 rgba(168, 85, 247, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+        .galaxy-card.out-of-stock {
+            border-color: rgba(239, 68, 68, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            filter: grayscale(40%);
+            opacity: 0.5;
+        }
+        .tab-btn.active {
+            background-color: rgb(168, 85, 247);
+            color: white;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        /* UPGRADE: Memungkinkan deskripsi panjang */
+        .deskripsi-panjang {
+            word-wrap: break-word;
+            display: block !important;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-between selection:bg-purple-500 selection:text-white antialiased">
+
+    <header class="container mx-auto px-4 pt-16 pb-4 text-center relative overflow-hidden">
+        <div class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-purple-500/40 overflow-hidden shadow-2xl shadow-purple-500/30 bg-slate-950 relative group">
+            <img src="https://i.ibb.co.com/BHkzG4Y2/Tak-berjudul30-20260617181944.png" alt="Logo RAKSJA GALAXYHOST" class="w-full h-full object-cover scale-105 transition duration-500 group-hover:scale-110">
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-wider text-white uppercase glow-text">
+            RAKSJA <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">GALAXYHOST</span>
+        </h1>
+        <p class="mt-4 text-gray-400 max-w-md mx-auto text-sm md:text-base font-medium">
+            🚀 Penyedia Hosting Bot WhatsApp Stabil & Script Backup Bot Premium Termurah.
+        </p>
+        
+        <div class="mt-8 inline-flex p-1.5 bg-purple-950/40 backdrop-blur-md border border-purple-500/20 rounded-2xl gap-2 shadow-inner flex-wrap justify-center">
+            <button onclick="switchTab('hosting')" id="btn-hosting" class="tab-btn active px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition duration-300 flex items-center gap-2 text-purple-300 hover:text-white">
+                <i class="fa-solid fa-server"></i> Paket Hosting
+            </button>
+            <button onclick="switchTab('backup')" id="btn-backup" class="tab-btn px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition duration-300 flex items-center gap-2 text-purple-300 hover:text-white">
+                <i class="fa-solid fa-boxes-stacked"></i> Backup Bot
+            </button>
+            <button onclick="switchTab('testi')" id="btn-testi" class="tab-btn px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition duration-300 flex items-center gap-2 text-purple-300 hover:text-white">
+                <i class="fa-solid fa-comment-dots"></i> Testimoni
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-6xl flex-grow">
+        
+        <div id="tab-hosting-content">
+            <h2 class="text-2xl font-extrabold text-center text-white mb-10 tracking-wide flex items-center justify-center gap-3">
+                <i class="fa-solid text-purple-500 fa-box-open animate-bounce"></i> PILIHAN PAKET HOSTING
+            </h2>
+            <div id="hosting-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                <div class="galaxy-card ready rounded-2xl p-6 relative overflow-hidden">
+                    <h3 class="text-xl font-bold text-white mb-5 flex items-center gap-2.5 border-b border-purple-500/20 pb-3">
+                        <i class="fa-solid text-purple-400 fa-gift"></i> Fasilitas & Keuntungan
+                    </h3>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm text-gray-300">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Uptime 24 Jam Nonstop</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Support NodeJS v18+</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Support Baileys / WABot</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Python / Telegram Bot</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Free Install Bot Pertama</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Anti Delay / Fast Respond</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Garansi Full Replace</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Run Banyak Script</li>
+                        <li class="flex items-center gap-2.5 sm:col-span-2"><i class="fa-solid fa-square-check text-green-400 text-base"></i> Akses Penuh Kustomisasi Startup</li>
+                    </ul>
+                </div>
+
+                <div class="galaxy-card ready rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-5 flex items-center gap-2.5 border-b border-purple-500/20 pb-3">
+                        <i class="fa-solid text-purple-400 fa-bolt"></i> Infrastruktur Server
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="bg-purple-950/20 p-4 rounded-xl border border-purple-500/10">
+                            <span class="text-xs text-gray-400 block mb-1.5 font-medium">Lokasi Server</span>
+                            <span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-earth-asia text-purple-400"></i> Datacenter Indonesia</span>
+                        </div>
+                        <div class="bg-purple-950/20 p-4 rounded-xl border border-purple-500/10">
+                            <span class="text-xs text-gray-400 block mb-1.5 font-medium">Teknologi Storage</span>
+                            <span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-microchip text-purple-400"></i> SSD NVMe Ultra Fast</span>
+                        </div>
+                        <div class="bg-purple-950/20 p-4 rounded-xl border border-purple-500/10">
+                            <span class="text-xs text-gray-400 block mb-1.5 font-medium">Kapasitas Bandwidth</span>
+                            <span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-wifi text-purple-400"></i> Up To 1 Gbps Speed</span>
+                        </div>
+                        <div class="bg-purple-950/20 p-4 rounded-xl border border-purple-500/10">
+                            <span class="text-xs text-gray-400 block mb-1.5 font-medium">Sistem Manajemen</span>
+                            <span class="font-semibold text-white flex items-center gap-2"><i class="fa-solid fa-gauge-high text-purple-400"></i> Pterodactyl Panel</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-purple-300/70 mt-5 italic text-center font-medium">
+                        <i class="fa-solid fa-shield-halved text-purple-400 mr-1"></i> Proteksi DDoS & Sistem Online 24/7 Terjaga.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-backup-content" class="hidden">
+            <h2 class="text-2xl font-extrabold text-center text-white mb-10 tracking-wide flex items-center justify-center gap-3">
+                <i class="fa-solid text-fuchsia-500 fa-cubes animate-pulse"></i> KATEGORI BACKUP BOT PREMIUM
+            </h2>
+            <div id="backup-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+
+        <div id="tab-testi-content" class="hidden">
+            <h2 class="text-2xl font-extrabold text-center text-white mb-10 tracking-wide flex items-center justify-center gap-3">
+                <i class="fa-solid text-amber-400 fa-star animate-pulse"></i> KUMPULAN TESTIMONI PELANGGAN
+            </h2>
+            <div id="testi-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <div class="mt-16 text-center max-w-xl mx-auto bg-gradient-to-br from-purple-900/30 to-indigo-950/30 border border-purple-500/30 rounded-2xl p-8 shadow-xl relative overflow-hidden">
+            <h4 class="text-xl font-bold text-white mb-2 tracking-wide">Mau Konsultasi Terlebih Dahulu?</h4>
+            <p class="text-xs text-gray-400 mb-6 font-medium">Tanyakan admin secara langsung lewat WhatsApp untuk kustomisasi spesifikasi khusus atau info promo diskon.</p>
+            <a href="https://wa.me/628815825403" target="_blank" class="inline-flex items-center gap-2.5 bg-green-600 hover:bg-green-500 text-white font-extrabold text-sm py-3.5 px-8 rounded-xl transition duration-300 shadow-lg shadow-green-600/20 transform hover:-translate-y-0.5">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Hubungi Admin via WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 text-xs text-gray-500 border-t border-purple-950/40 mt-16 bg-black/40 tracking-wider font-medium">
+        <p>&copy; 2026 <span class="text-purple-400 font-semibold">RAKSJA GALAXYHOST</span>. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const WA_NUMBER = "628815825403";
+        const HOSTING_PRODUCTS = [
+            { id: "ram1gb",     name: "RAM 1 GB",    cpu: "CPU 50%",  price: "Rp5.000",  text: "RAM 1GB",       ready: false },
+            { id: "ram2gb",     name: "RAM 2 GB",    cpu: "CPU 100%", price: "Rp10.000", text: "RAM 2GB",       ready: false },
+            { id: "ram4gb",     name: "RAM 4 GB",    cpu: "CPU 150%", price: "Rp15.000", text: "RAM 4GB",       ready: false },
+            { id: "ram8gb",     name: "RAM 8 GB",    cpu: "CPU 200%", price: "Rp20.000", text: "RAM 8GB",       ready: false },
+            { id: "unlimited",  name: "UNLIMITED",   cpu: "CPU MAX",  price: "Rp25.000", text: "RAM UNLIMITED", ready: false }
+        ];
+
+        const BACKUP_PRODUCTS = [
+            { name: "bot JPM grup", price: "Rp15.000", desc: "Backup ringan untuk push member menggunakan grup jadi status foto dan teks ini belum Support video. Script ini sangat optimal untuk kebutuhan promosi massal dengan sistem yang sangat stabil dan anti ribet.", icon: "fa-robot", tag: "BEST SELLER", tagClass: "from-fuchsia-500 to-purple-600" },
+        ];
+
+        const MASTER_TESTIMONI = [
+            { name: "DIMZft", product: "RAM 8 GB", review: "Gw kira hosting nya cuma buat bot wa doang ternyata bisa buat server minecraft juga.", star: 5 }
+        ];
+
+        function switchTab(tabId) {
+            const views = { hosting: document.getElementById('tab-hosting-content'), backup: document.getElementById('tab-backup-content'), testi: document.getElementById('tab-testi-content') };
+            const btns = { hosting: document.getElementById('btn-hosting'), backup: document.getElementById('btn-backup'), testi: document.getElementById('btn-testi') };
+            Object.keys(views).forEach(key => {
+                if(views[key]) views[key].classList.toggle('hidden', key !== tabId);
+                if(btns[key]) btns[key].classList.toggle('active', key === tabId);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const hContainer = document.getElementById('hosting-container');
+            const bContainer = document.getElementById('backup-container');
+            const tContainer = document.getElementById('testi-container');
+
+            if(hContainer) {
+                hContainer.innerHTML = HOSTING_PRODUCTS.map(item => {
+                    const cardClass = item.ready ? "galaxy-card ready" : "galaxy-card out-of-stock";
+                    const badgeClass = item.ready ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white animate-pulse" : "bg-zinc-800 border border-zinc-700 text-zinc-400";
+                    const badgeText = item.ready ? "READY" : "KOSONG";
+                    const actionButton = item.ready ? `<a href="https://wa.me/${WA_NUMBER}?text=Halo%20Raksja,%20order%20${encodeURIComponent(item.text)}" class="block w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white text-xs font-extrabold py-3 rounded-xl">Order</a>` : `<button disabled class="w-full bg-zinc-900 text-zinc-600 text-xs font-extrabold py-3 rounded-xl cursor-not-allowed">Belum Ready</button>`;
+                    return `<div class="${cardClass} rounded-2xl p-6 flex flex-col justify-between text-center relative group">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[10px] font-black px-3 py-1 rounded-full ${badgeClass}">${badgeText}</div>
+                        <div><h3 class="text-xl font-extrabold text-white mb-2 mt-2">${item.name}</h3><div class="text-[11px] font-bold text-purple-300 bg-purple-500/10 py-1 px-3 rounded-lg inline-block mb-5">${item.cpu}</div><div class="text-3xl font-black text-white my-2">${item.price}<span class="text-xs text-gray-400 block">/ bulan</span></div></div>
+                        <div class="mt-6">${actionButton}</div></div>`;
+                }).join('');
+            }
+
+            if(bContainer) {
+                bContainer.innerHTML = BACKUP_PRODUCTS.map(bot => {
+                    const badgeElement = bot.tag ? `<div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${bot.tagClass} text-[10px] font-black px-3 py-1 rounded-full text-white uppercase shadow-md">${bot.tag}</div>` : '';
+                    return `<div class="galaxy-card ready rounded-2xl p-6 flex flex-col justify-between text-center relative group">
+                        ${badgeElement}
+                        <div><div class="w-14 h-14 bg-purple-500/10 border border-purple-500/30 rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl text-purple-400"><i class="fa-solid ${bot.icon}"></i></div>
+                        <h3 class="text-lg font-extrabold text-white mb-2">${bot.name}</h3>
+                        <p class="text-xs text-gray-400 mb-4 deskripsi-panjang">${bot.desc}</p>
+                        <div class="text-2xl font-black text-fuchsia-400 my-2">${bot.price}</div></div>
+                        <a href="https://wa.me/${WA_NUMBER}?text=Halo%20Raksja,%20beli%20Backup%20Bot%20${encodeURIComponent(bot.name)}" class="mt-6 block w-full bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white text-xs font-extrabold py-3 rounded-xl">Beli Script</a>
+                    </div>`;
+                }).join('');
+            }
+
+            if(tContainer) {
+                tContainer.innerHTML = MASTER_TESTIMONI.map(t => {
+                    const starIcons = '<i class="fa-solid fa-star text-amber-400 text-xs"></i>'.repeat(t.star);
+                    return `<div class="galaxy-card ready rounded-2xl p-6 text-left flex flex-col justify-between relative group">
+                        <div><div class="flex items-center justify-between mb-3"><span class="font-extrabold text-white text-base">${t.name}</span><div class="flex gap-0.5">${starIcons}</div></div>
+                        <div class="text-[10px] font-bold text-purple-300 bg-purple-500/10 py-1 px-2.5 rounded-lg inline-block mb-4">Produk: ${t.product}</div>
+                        <p class="text-xs text-gray-400 italic leading-relaxed font-medium">"${t.review}"</p></div>
+                        <div class="mt-5 pt-3 border-t border-purple-500/10 text-[10px] text-green-400 font-extrabold"><i class="fa-solid fa-circle-check"></i> Buyer Terverifikasi</div></div>`;
+                }).join('');
+            }
+        });
+    </script>
+</body>
+</html>
